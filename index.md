@@ -52,5 +52,5 @@ Lab 10: [Init containers](labs/10-init/)
 Minikube is an all-in-one deployment of a Kubernetes cluster which can be run on your local machine.  The following labs provide steps for installing it on Mac, Windows and Ubuntu. 
 
 Lab 11: [Mac](labs/11-mini-mac/)
-Lab 11: [Ubuntu](labs/11-mini-ubuntu/)
-Lab 11: [Windows](labs/11-mini-win/)
+[Ubuntu](labs/11-mini-ubuntu/)
+[Windows](labs/11-mini-win/)
