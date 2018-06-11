@@ -164,10 +164,8 @@ spec:
 After creating the above two deployments, our three node cluster should look like below.
 
 
-|	node-1			|		node-2			|		node-3	|			
-
+|	node-1			|		node-2			|		node-3	|		
 |	webserver-1		|	    webserver-2		|	  webserver-3 |
-
 |	    cache-1		|		cache-2			|	      cache-3      |
 
 As you can see, all 3 replicas of the web-server are automatically co-located with the cache as expected.
