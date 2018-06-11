@@ -163,13 +163,13 @@ spec:
 
 After creating the above two deployments, our three node cluster should look like below.
 
-- - - -
-	node-1					node-2					node-3				
-- - - -
-	webserver-1			    webserver-2			  webserver-3
-- - - -
-	    cache-1				cache-2				      cache-3
-- - - -
+
+|	node-1			|		node-2			|		node-3	|			
+
+|	webserver-1		|	    webserver-2		|	  webserver-3 |
+
+|	    cache-1		|		cache-2			|	      cache-3      |
+
 As you can see, all 3 replicas of the web-server are automatically co-located with the cache as expected.
 
 To confirm run: 
@@ -181,11 +181,11 @@ Best practice is to configure these highly available stateful workloads such as 
 Highly Available database statefulset has one master and three replicas, one may prefer none of the database instances to be co-located on the same node.
 
 Using Anti-Affinity we can specify that each of the DB-REPLICAs will be on separate nodes.
-- - - -
-	node-1			node-2			node-3			node-4
-- - - -
-    DB-MASTER	    DB-REPLICA-1	    DB-REPLICA-2	     DB-REPLICA-3
-- - - -
+
+|	node-1		|	node-2		|	node-3		|	node-4  |
+
+|    DB-MASTER	 |   DB-REPLICA-1	 |   DB-REPLICA-2	 |    DB-REPLICA-3   |
+
 
 ## Cleanup
 Delete deployments
