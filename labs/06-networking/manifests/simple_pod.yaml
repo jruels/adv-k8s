@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: simple-api
+    labels:
+      lab: podlab
+spec:
+    containers:
+    - name: simpleservice
+      image: mhausenblas/simpleservice:0.5.0
+      ports:
+      - containerPort: 9876
+      env:
+      - name: DEMO_GREETING
+        value: "Hello from the environment!!"
