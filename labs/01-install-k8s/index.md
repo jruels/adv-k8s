@@ -3,23 +3,23 @@
 ### MacOS 
 Run the following commands in a terminal 
 ```
-chmod 400 /path/to/k8s-lab
+chmod 600 /path/to/k8s-lab
 ssh -i /path/to/k8s-lab ubuntu@<server IP>
 ```
 
 ### Windows 
 Open Putty and configure a new session. 
   
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%203.png)
+![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%204.png)
 
 
 Expand “Connection/SSH/Auth and then specify the PPK file 
 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%203.png)
+![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%204.png)
 
  Now save your session 
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%203.png)
+![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%204.png)
 
 
 ## Install Kubernetes on all servers
