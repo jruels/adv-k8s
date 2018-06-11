@@ -10,19 +10,19 @@ ssh -i /path/to/k8s-lab ubuntu@<server IP>
 ### Windows 
 Open Putty and configure a new session. 
   
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%202.png)
+![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%203.png)
+
 
 Expand “Connection/SSH/Auth and then specify the PPK file 
 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%202.png)
+![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%203.png)
 
  Now save your session 
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%202.png)
+![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%203.png)
 
 
 ## Install Kubernetes on all servers
-
 
 Following commands must be run as the root user. To become root run: 
 ```
@@ -33,14 +33,22 @@ Install packages required for Kubernetes on all servers as the root user
 ```
 apt-get update && apt-get install -y apt-transport-https
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+```
+
+Create Kubernetes repository by running the following as one command.
+```
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
+```
+
+Now that you've added the repository install the packages
+```
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
 ```
 
-The kubelet is now restarting every few seconds, as it waits in a crashloop for kubeadm to tell it what to do.
+The kubelet is now restarting every few seconds, as it waits in a `crashloop` for `kubeadm` to tell it what to do.
 
 ### Initialize the Master 
 Run the following command on the master node to initialize 
