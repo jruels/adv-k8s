@@ -181,7 +181,6 @@ Highly Available database statefulset has one master and three replicas, one may
 Using Anti-Affinity we can specify that each of the DB-REPLICAs will be on separate nodes.
 
 |	node-1		|	node-2		|	node-3		|	node-4  |
-
 |    DB-MASTER	 |   DB-REPLICA-1	 |   DB-REPLICA-2	 |    DB-REPLICA-3   |
 
 
