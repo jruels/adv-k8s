@@ -32,14 +32,15 @@ Lab 5: [Create ConfigMap](labs/05-configmap/)
 
 ### Day 2
 Lab 6: [Networking & health checks](labs/06-networking/)  
-Lab 7: [Services](labs/07-services/)  
-Lab 8: [DNS](labs/08-dns/)  
-Lab 9: [Secrets](labs/09-secrets/)  
-Lab 10: [Init containers](labs/10-init/)  
+Lab 7: [RBAC](labs/07-rbac/)  
+Lab 8: [Services](labs/08-services/)  
+Lab 9: [DNS](labs/09-dns/)  
+Lab 10: [Secrets](labs/10-secrets/)  
+Lab 11: [Init containers](labs/11-init/)  
 
 ### Optional lab (Minikube)
 Minikube is an all-in-one deployment of a Kubernetes cluster which can be run on your local machine.  The following labs provide steps for installing it on Mac, Windows and Ubuntu. 
 
-Lab 11: [Mac](labs/11-mini-mac/)
-[Ubuntu](labs/11-mini-ubuntu/)
-[Windows](labs/11-mini-win/)
+Lab 12: [Mac](labs/12-mini-mac/)
+[Ubuntu](labs/12-mini-ubuntu/)
+[Windows](labs/12-mini-win/)
