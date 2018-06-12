@@ -1,4 +1,4 @@
-# # Kubernetes Advanced Course Lab 10
+# Kubernetes Advanced Course Lab 10
 # Init containers
 In this lab we will be exploring init containers and how they can be used for complex application deployment orchestration. 
 
