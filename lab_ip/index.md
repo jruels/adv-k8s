@@ -17,16 +17,16 @@ ssh -i /path/to/k8s-lab core@<LAB IP>
 
 ### Windows 
 Open Putty and configure a new session.   
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%204.png)
+![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%205.png)
 
 Expand “Connection/SSH/Auth and then specify the PPK file 
 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%204.png)
+![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%205.png)
 
 
  Now save your session 
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%204.png)
+![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%205.png)
 
 
 Student1:
@@ -194,6 +194,13 @@ Master: 52.53.219.210
 Node1: 13.57.3.254
 Node2: 54.183.7.219
 CoreOS: 54.183.189.72
+```
+
+Student22: 
+```
+Master: 54.67.70.216
+Node1: 13.57.250.192
+Node2: 52.53.251.25
 ```
 
 Instructor:
