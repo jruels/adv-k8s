@@ -95,9 +95,9 @@ node-affinity-589d989958-tnvlq   1/1     Running   0          1m    100.96.1.13 
 ``` 
 
 ## Cleanup
-Delete nginx POD
 ```
 kubectl delete pod nginx 
+kubectl delete deploy node-affinity
 ```
 
 ## Pod Affinity/Anti-Affinity
