@@ -18,7 +18,8 @@ Lab 2: [Advanced scheduling](labs/02-affinity/)
 Lab 3: [Custom scheduler](labs/03-scheduler/)  
 Lab 4: [Kubelet](labs/04-kubelet/)  
 Lab 5: [Create ConfigMap](labs/05-configmap/)  
-<!--- #
+<!-- 
+#
 #### Day 2
 #Lab 6: [Networking & health checks](labs/06-networking/)  
 #Lab 7: [RBAC](labs/07-rbac/)  
@@ -32,4 +33,4 @@ Lab 5: [Create ConfigMap](labs/05-configmap/)
 
 #Lab 12: [Mac](labs/12-mini-mac/)
 #[Ubuntu](labs/12-mini-ubuntu/)
-#[Windows](labs/12-mini-win/) -->
+#[Windows](labs/12-mini-win/) --> 
