@@ -204,6 +204,12 @@ Placed pod [default/sleep-5c78857b77-jdfnp] on ip-172-20-43-133.us-west-1.comput
 ```
 
 At last, check the `events` with `kubectl`. You should see that the sleep pods were scheduled by the `random-scheduler`.
+
+```
+kubectl get events | grep Scheduled
+```
+
+output:
 ```
 4m          4m           1       sleep-5c78857b77-jdfnp-tqdrh                         Pod                                              Normal   Scheduled           random-scheduler                                      Placed pod [default/sleep-5c78857b77-jdfnp] on ip-172-20-43-133.us-west-1.compute.internal
 ```
