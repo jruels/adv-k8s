@@ -1,119 +1,10 @@
 # Kubernetes Advanced Course Lab 06
-# Pod Networking
-
-## Review Pod manifest
-Open `simple_pod.yaml` in a text editor and review the configuration. 
-```
-vim manifests/simple_pod.yaml
-```
-
-```
-apiVersion: v1
-kind: Pod
-metadata:
-    name: simple-api
-    labels:
-      lab: podlab
-spec:
-    containers:
-    - name: simpleservice
-      image: mhausenblas/simpleservice:0.5.0
-      ports:
-      - containerPort: 9876
-      env:
-      - name: DEMO_GREETING
-        value: "Hello from the environment!!"
-```
-
-NOTE: The `env` section.  
-
-## Create Pod from manifest
-```
-kubectl apply -f manifests/simple_pod.yaml
-```
-
-## Confirm Pod is running 
-```
-kubectl get pods simple-api -o wide 
-```
-
-```
-NAME         READY     STATUS    RESTARTS   AGE       IP          NODE
-simple-api   1/1       Running   0          29s       10.44.0.1   ip-10-0-100-70
-```
-Make a note of `IP` for next step. 
-
-## Access web service 
-Because we have not yet exposed the `simple-api` service externally it is only accessible through the container network.  So we are going to use a jump container to log in and run commands on the container network.
-
-## Create jump container 
-```
-kubectl run -i -t --rm jumpserver --image=satoms/jumpserver:v1 --restart=Never
-```
-
-**NOTE: The --restart policy flag on the kubectl run command determines whether the command will start a Deployment (--restart=Always), a Job (--restart=OnFailure), or a bare pod (--restart=Never). The -i and -t flags function similarly to Docker flags to instantiate an interactive TTY in the foreground for the pod container. The --rm flag ensures that the pod resources are deleted when the pod container exits.**
-
-Now let’s `curl` the `simple-api` Pod on the `clusterIP`  
-```
-curl http://<CLUSTER-IP>:9876/info
-```
-
-Returns something similar to:
-```
-{"host": "10.44.0.1:9876", "version": "0.5.0", "from": "10.36.0.2"}/ #
-```
-
-We can also call the /**env** endpoint to request the service echo all of its runtime environment variables:
-
-```
-curl http://<CLUSTER-IP>:9876/env
-```
-
-You’ll get output like below: 
-```
-{"version": "0.5.0", "env": "{'LANG': 'C.UTF-8', 'KUBERNETES_PORT_443_TCP_PROTO': 'tcp', 'KUBERNETES_PORT_443_TCP': 'tcp://10.96.0.1:443', 'PYTHON_VERSION': '2.7.13', 'PYTHON_PIP_VERSION': '9.0.1', 'KUBERNETES_SERVICE_HOST': '10.96.0.1', 'HOSTNAME': 'simple-api', 'KUBERNETES_SERVICE_PORT_HTTPS': '443', 'DEMO_GREETING': 'Hello from the environment!!', 'REFRESHED_AT': '2017-04-24T13:50', 'GPG_KEY': 'C01E1CAD5EA2C4F0B8E3571504C367C218ADD4FF', 'KUBERNETES_PORT_443_TCP_ADDR': '10.96.0.1', 'KUBERNETES_PORT': 'tcp://10.96.0.1:443', 'PATH': '/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'KUBERNETES_PORT_443_TCP_PORT': '443', 'HOME': '/root', 'KUBERNETES_SERVICE_PORT': '443'}"}/ #
-```
-
-Notice the environment  set in the POD manifest has been injected into the environment.
-```
-'DEMO_GREETING': 'Hello from the environment!!'
-```
-
-## Expose `simple-api` service externally 
-Now if we want to access this service without using a jump container we have to expose the service and map the container port to the Kubernetes node port. 
-
-```
-kubectl expose pod simple-api --port=4000 --target-port=9876 --name=simple-api
-```
-
-## Get service connection info
-```
-kubectl get svc simple-api
-```
-
-You’ll see the `ClusterIP` displayed
-```
-NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
-simple-api   ClusterIP   10.102.115.255   <none>        4000/TCP   9m
-```
-
-## Connect to service on `ClusterIP`
-Now that we have the service information we can connect using `curl` to the `ClusterIP`
-```
-curl http://10.102.115.255:4000/info
-```
-
-## Cleanup 
-```
-kubectl delete pod simple-api
-```
-
 ## Use container probes for health checks 
-Every Pod resource has a restartPolicy that applies to all of the containers for the pod. By default, the `restartPolicy` is `Always`, which means that the `kubelet` on the node hosting that pod will automatically restart the pod’s containers if they exit or fail. This is the correct policy for applications that are not expected to terminate, like web applications or services like the `simpleservice`.
+Every Pod resource has a `restartPolicy` that applies to all of the containers for the Pod. By default, the `restartPolicy` is `Always`, which means that the `kubelet` on the node hosting that pod will automatically restart the pod’s containers if they exit or fail. This is the correct policy for applications that are not expected to terminate, like web applications or services like the `simpleservice`.
 
 It’s sometimes the case that long-running applications can end up in a problematic state without crashing, and the `kubelet` will fail to recognize the need to intervene. For this reason, Kubernetes allows you to define different types of probe operations against containers, which the `kubelet` will execute periodically to assess container state.
 
-## Create Pod with liveness probe
+## Create Pod with liveness-exec probe
 Open `simple_liveness.yaml` in an editor and update to look like below:
 ```
 apiVersion: v1
@@ -139,12 +30,12 @@ spec:
       periodSeconds: 5
 ```
 
-To see this in operation, create the resource from `simple_liveness.yaml`, as before:
+To see this in operation, create the resource from `simple_liveness.yaml`
 ```
 kubectl apply -f manifests/simple_liveness.yaml
 ```
 
-Then use kubectl get with the -w option to list the pod details and then watch for changes. This will enable us to see updates to the status of running Pods as they are witnessed by Kubernetes.
+Then use `kubectl` get with the -w option to list the pod details and then watch for changes. This will enable us to see updates to the status of running Pods as they are witnessed by Kubernetes.
 ```
 kubectl get pods liveness-exec -w -o wide
 ```
@@ -315,7 +206,7 @@ livenessProbe:
     port: liveness-port
 ```
 
-## Define readiness probes
+## Define readiness-exec probe
 Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup. In such cases, you don’t want to kill the application, but you don’t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.
 
 Readiness probes are configured similarly to liveness probes. The only difference is that you use the `readinessProbe` field instead of the `livenessProbe` field.
@@ -331,7 +222,59 @@ readinessProbe:
 
 Configuration for HTTP and TCP readiness probes also remains identical to liveness probes.
 
+## Combine readinesss and liveness Probes
 Readiness and liveness probes can be used in parallel for the same container. Using both can ensure that traffic does not reach a container that is not ready for it, and that containers are restarted when they fail.
+
+To demonstrate this I have created a manifest which has both readiness and liveness probes. 
+
+Look at `06-networking/manifests/helloworld-liveness-readiness.yml`
+
+The important part is: 
+```
+spec:
+      containers:
+      - name: k8s-demo
+        image: wardviaene/k8s-demo
+        ports:
+        - name: nodejs-port
+          containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: nodejs-port
+          initialDelaySeconds: 15
+          timeoutSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /
+            port: nodejs-port
+          initialDelaySeconds: 15
+          timeoutSeconds: 30
+```
+
+As you can see we are doing an `httpGet` request on the `nodejs-port` for our `livenessProbe` and then we are also doing a `readinessProbe` check to confirm the container comes online and is available to serve our application. 
+
+Now let's see the different between a deployment with just a `livenessProbe` and a deployment with both `livenessProbe and readinessProbe`
+
+Start by deploying `helloworld-healthcheck.yml` and monitor the status
+```
+kubectl apply -f manifests/helloworld-healthcheck.yml && watch kubectl get pods
+```
+
+You will see that the Pods are scheduled and immediately go into a `Ready` state which means Kubernetes will start sending traffic to them. 
+
+As we discussed however there are many times where your application takes a bit longer to come online and we don't want our customers being directed to Pods that do not have a fully functioning application. 
+
+To avoid this we also add a `readinessProbe` 
+
+Deploy `helloworld-liveness-readiness.yml` and monitor the status
+```
+kubectl apply -f manifests/helloworld-liveness-readiness.yml && watch kubectl get pods 
+```
+
+Now you will see that the Pods are scheduled, but they do not enter a 	`Ready` state until the nodejs server is responding to `GET` requests on `/`
+
+## Lab Complete
 
 
 
