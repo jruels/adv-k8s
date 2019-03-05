@@ -20,3 +20,12 @@ Lab 3: [Custom scheduler](labs/03-scheduler/)
 Lab 4: [Kubelet](labs/04-kubelet/)  
 Lab 5: [Create ConfigMap](labs/05-configmap/)  
 
+#### Day 2
+Lab 6: [Health checks](labs/06-networking/)  
+Lab 7: [RBAC](labs/07-rbac/)  
+Lab 8: [Services](labs/08-services/)  
+Lab 9: [DNS](labs/09-dns/)  
+Lab 10: [Secrets](labs/10-secrets/)  
+Lab 11: [Init containers](labs/11-init/)  
+
+
