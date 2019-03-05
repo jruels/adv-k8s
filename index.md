@@ -24,8 +24,8 @@ Lab 5: [Create ConfigMap](labs/05-configmap/)
 Lab 6: [Health checks](labs/06-networking/)  
 Lab 7: [RBAC](labs/07-rbac/)  
 Lab 8: [Services](labs/08-services/)  
-Lab 9: [DNS](labs/09-dns/)  
-Lab 10: [Secrets](labs/10-secrets/)  
-Lab 11: [Init containers](labs/11-init/)  
+Lab 9: [DNS](labs/10-dns/)  
+Lab 10: [Secrets](labs/11-secrets/)  
+Lab 11: [Init containers](labs/12-init/)  
 
 
