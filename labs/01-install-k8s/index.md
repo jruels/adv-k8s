@@ -3,23 +3,23 @@
 ### MacOS 
 Run the following commands in a terminal 
 ```
-chmod 600 /path/to/k8s-lab
-ssh -i /path/to/k8s-lab ubuntu@<server IP>
+chmod 600 /path/to/lab.pem
+ssh -i /path/to/lab.pem ubuntu@<server IP>
 ```
 
 ### Windows 
 Open Putty and configure a new session. 
   
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%204.png)
+![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%205.png)
 
 
-Expand “Connection/SSH/Auth and then specify the PPK file 
+Expand “Connection_SSH_Auth and then specify the PPK file 
 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%204.png)
+![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%205.png)
 
  Now save your session 
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%204.png)
+![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%205.png)
 
 
 ## Install Kubernetes on all servers
@@ -37,15 +37,13 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
 Create Kubernetes repository by running the following as one command.
 ```
-cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-deb http://apt.kubernetes.io/ kubernetes-xenial main
-EOF
+echo “deb https://apt.kubernetes.io/ kubernetes-xenial main” | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 ```
 
 Now that you've added the repository install the packages
 ```
 apt-get update
-apt-get install -y kubelet kubeadm kubectl
+apt-get install -y kubelet=1.14.1-00 kubeadm=1.14.1-00 kubectl
 ```
 
 The kubelet is now restarting every few seconds, as it waits in a `crashloop` for `kubeadm` to tell it what to do.
@@ -53,7 +51,7 @@ The kubelet is now restarting every few seconds, as it waits in a `crashloop` fo
 ### Initialize the Master 
 Run the following command on the master node to initialize 
 ```
-kubeadm init
+kubeadm init --kubernetes-version=1.14.1 --ignore-preflight-errors=all
 ```
 
 If everything was successful output will contain 
@@ -84,10 +82,11 @@ sudo sysctl net.bridge.bridge-nf-call-iptables=1
 Install a Pod network on the master node
 ```
 export kubever=$(kubectl version | base64 | tr -d '\n')
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+curl -SL "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" \
+| kubectl apply -f -
 ```
 
-Wait until `kube-dns` pod is in a `running` state
+Wait until `coredns` pod is in a `running` state
 ```
 kubectl get pods -n kube-system
 ```
@@ -95,7 +94,7 @@ kubectl get pods -n kube-system
 ### Join nodes to cluster 
 Log into each of the worker nodes and run the join command from `kubeadm init` master output. 
 ```
-sudo kubeadm join --token <token> <IP>:6443 --discovery-token-ca-cert-hash <hash>
+sudo kubeadm join <command from kubeadm init output> --ignore-preflight-errors=all
 ```
 
 To confirm nodes have joined successfully log back into master and run 
