@@ -19,11 +19,11 @@ Download `lab.ppk` from `keys` directory
 
 Open Putty and configure a new session. 
   
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A.png)
+![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%202.png)
 
 Expand “Connection_SSH_Auth and then specify the PPK file 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B.png)
+![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%202.png)
 
  Now save your session    
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA.png)
+![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%202.png)
