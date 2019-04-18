@@ -95,9 +95,9 @@ node-affinity-589d989958-tnvlq   1/1     Running   0          1m    100.96.1.13 
 ``` 
 
 ## Cleanup
+Delete nginx POD
 ```
 kubectl delete pod nginx 
-kubectl delete deploy node-affinity
 ```
 
 ## Pod Affinity/Anti-Affinity
@@ -262,7 +262,7 @@ spec:
 
 Go ahead and create it
 ```
-kubectl apply -f 02-affinity/manifests/pod-affinity.yaml
+kubectl apply -f manifests/pod-affinity.yaml
 ```
 
 Now if you go check the pods you will see they are running on the same node.  
@@ -302,7 +302,7 @@ kubectl get pods -o wide
 ## Cleanup 
 Delete the deployments 
 ```
-kubectl delete -f 02-affinity/manifests/pod-affinity.yaml
+kubectl delete -f manifests/pod-affinity.yaml
 ```
 
 
@@ -317,7 +317,7 @@ Again we are deploying `pod-affinity-1` without any special labels, but this is 
 
 Now deploy and confirm it works. 
 ```
-kubectl apply -f 02/affinity/manifests/pod-anti-affinity.yaml
+kubectl apply -f manifests/pod-anti-affinity.yaml
 ```
 
 You will now see that 4 deployments were created.  We are going to look at the first 3 and will touch on the 4th in a bit. 
