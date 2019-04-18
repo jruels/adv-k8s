@@ -10,16 +10,16 @@ ssh -i /path/to/lab.pem ubuntu@<server IP>
 ### Windows 
 Open Putty and configure a new session. 
   
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%205.png)
+![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%206.png)
 
 
 Expand “Connection_SSH_Auth and then specify the PPK file 
 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%205.png)
+![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%206.png)
 
  Now save your session 
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%205.png)
+![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%206.png)
 
 
 ## Install Kubernetes on all servers
@@ -37,7 +37,7 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
 Create Kubernetes repository by running the following as one command.
 ```
-echo “deb https://apt.kubernetes.io/ kubernetes-xenial main” | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
 ```
 
 Now that you've added the repository install the packages
