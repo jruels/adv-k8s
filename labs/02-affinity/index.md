@@ -274,7 +274,7 @@ kubectl scale --replicas=4 deployment/pod-affinity-2
 
 Delete the deployment 
 ```
-kubectl delete -f 02-affinity/manifests/pod-affinity.yaml
+kubectl delete -f manifests/pod-affinity.yaml
 ```
 
 ## Multi-zone Affinity
