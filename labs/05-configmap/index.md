@@ -65,6 +65,7 @@ Look in the `config` directory and you will see `reverseproxy.conf` which contai
 2. Create `nginx.yaml`  to create a Pod with the following attributes:
 	* Container 1
 		* name: `helloworld-nginx`
+		* label: `app: helloworld-nginx`
 		* image: `nginx:1.15`
 		* port: `80`
 		* Mount configMap `nginx-config`  to `/etc/nginx/conf.d` with 
