@@ -227,7 +227,7 @@ Readiness and liveness probes can be used in parallel for the same container. Us
 
 To demonstrate this I have created a manifest which has both readiness and liveness probes. 
 
-Look at `06-networking/manifests/helloworld-liveness-readiness.yml`
+Look at `manifests/helloworld-liveness-readiness.yml`
 
 The important part is: 
 ```
