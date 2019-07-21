@@ -9,7 +9,7 @@ This site includes the slides and labs for the Advanced Kubernetes class.
 [Lab Setup](labs/001-setup/)  
 
 ## Course Content
-[Slides](https://bit.ly/adv-k8s-content)  
+[Slides](https://drive.google.com/file/d/1V63Vpq_WlhV7G46KQmejswdbXLjgbKdV/view?usp=sharing)  
 
 ## Labs
 
