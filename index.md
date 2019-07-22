@@ -4,7 +4,8 @@ This site includes the slides and labs for the Advanced Kubernetes class.
 
 
 ## lab VMs  
-[Lab VM IPs](https://docs.google.com/spreadsheets/d/1psMAAPxgHq9wpZVftao9UT8MIWR1xljq-WB8aOiVBRI/edit?usp=sharing)
+Instructor will provide lab VM sheet.
+[//]: # (https://docs.google.com/spreadsheets/d/1psMAAPxgHq9wpZVftao9UT8MIWR1xljq-WB8aOiVBRI/edit?usp=sharing)
 
 [Lab Setup](labs/001-setup/)  
 
