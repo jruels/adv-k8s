@@ -432,7 +432,7 @@ ip-10-0-100-70    Ready     <none>    1d        v1.9.0
 
 Apply a taint to the top node. 
 ```
-kubectl taint nodes ip-10-0-100-102 dedicated=lab:NoSchedule
+kubectl taint nodes <ip-10-0-100-102> dedicated=lab:NoSchedule
 ```
 
 ## Deploy nginx without toleration
@@ -517,7 +517,7 @@ nginx-taint-9764dfc98-szmrm         1/1       Running   0          8m        10.
 
 ## Remove taint
 ```
-kubectl taint nodes ip-10-0-100-102 dedicated-
+kubectl taint nodes <ip-10-0-100-102> dedicated-
 ```
 
 ## Cleanup 
