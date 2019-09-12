@@ -10,16 +10,16 @@ ssh -i /path/to/lab.pem ubuntu@<server IP>
 ### Windows 
 Open Putty and configure a new session. 
   
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%206.png)
+![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%207.png)
 
 
-Expand “Connection_SSH_Auth and then specify the PPK file 
+Expand “Connection/SSH/Auth and then specify the PPK file 
 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%206.png)
+![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%207.png)
 
  Now save your session 
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%206.png)
+![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%207.png)
 
 
 ## Install Kubernetes on all servers
@@ -43,7 +43,7 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/
 Now that you've added the repository install the packages
 ```
 apt-get update
-apt-get install -y kubelet=1.14.1-00 kubeadm=1.14.1-00 kubectl
+apt-get install -y kubelet=1.15.3-00 kubeadm=1.15.3-00 kubectl
 ```
 
 The kubelet is now restarting every few seconds, as it waits in a `crashloop` for `kubeadm` to tell it what to do.
@@ -51,7 +51,7 @@ The kubelet is now restarting every few seconds, as it waits in a `crashloop` fo
 ### Initialize the Master 
 Run the following command on the master node to initialize 
 ```
-kubeadm init --kubernetes-version=1.14.1 --ignore-preflight-errors=all
+kubeadm init --kubernetes-version=1.15.3 --ignore-preflight-errors=all
 ```
 
 If everything was successful output will contain 
@@ -81,9 +81,7 @@ sudo sysctl net.bridge.bridge-nf-call-iptables=1
 ### Pod overlay network
 Install a Pod network on the master node
 ```
-export kubever=$(kubectl version | base64 | tr -d '\n')
-curl -SL "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" \
-| kubectl apply -f -
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
 
 Wait until `coredns` pod is in a `running` state
