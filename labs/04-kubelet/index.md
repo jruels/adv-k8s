@@ -1,7 +1,7 @@
 # Advanced Kubernetes Lab 04
 # Install Kubelet binary on Container Linux
 ## SSH into Container Linux instance
-`ssh core@<ip of instance>`
+`ssh -i </path/to/lab.pem> core@<ip of instance>`
 
 ## Download Kubelet serviced file 
 ```
