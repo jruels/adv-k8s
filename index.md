@@ -11,8 +11,7 @@ Instructor will provide lab VM sheet.
 
 ## Course Content
 [//]: # (https://drive.google.com/file/d/1V63Vpq_WlhV7G46KQmejswdbXLjgbKdV/view?usp=sharing)  
-[Slides:](https://bit.ly/adv-k8s-content)
-Instructor will provide link to slides
+[Slides](https://bit.ly/adv-k8s-content)
 
 ## Labs
 
