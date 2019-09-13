@@ -5,7 +5,7 @@ Every Pod resource has a `restartPolicy` that applies to all of the containers f
 It’s sometimes the case that long-running applications can end up in a problematic state without crashing, and the `kubelet` will fail to recognize the need to intervene. For this reason, Kubernetes allows you to define different types of probe operations against containers, which the `kubelet` will execute periodically to assess container state.
 
 ## Create Pod with liveness-exec probe
-Open `simple_liveness.yaml` in an editor and update to look like below:
+Open `simple_liveness.yaml` in an editor and review:
 ```
 apiVersion: v1
 kind: Pod
@@ -188,7 +188,7 @@ In addition to the readiness probe, this configuration includes a liveness probe
 
 Go ahead and create it:
 ```
-kubectl apply -f tcp-liveness.yaml
+kubectl apply -f manifests/tcp-liveness.yaml
 ```
 
 
