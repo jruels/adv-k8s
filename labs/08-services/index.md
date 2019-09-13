@@ -67,9 +67,9 @@ nginx     NodePort   10.98.228.135   <none>        80:31897/TCP   5m
 ```
 Note the `NodePort` for the next step
 
-Connect using `curl` to the NODE IP on the `NodePort` from previous step. 
+Connect using `curl` to the PUBLIC IP of any node in the cluster on the `NodePort` from previous step. 
 ```
-curl http://10.0.100.102:31897
+curl http://<NODE_IP>:<NODE_PORT>
 ```
 
 ## Expose deployment
@@ -91,7 +91,6 @@ nginx-deployment-6c54bd5869-f4j98   1/1       Running   0          10m       10.
 nginx-deployment-6c54bd5869-lpvrq   1/1       Running   0          10m       10.44.0.3   ip-10-0-100-70
 nginx-deployment-6c54bd5869-twfhf   1/1       Running   0          10m       10.44.0.1   ip-10-0-100-70
 ```
-Note the NODE IP PODs are running on 
 
 ## Create service to expose nginx 
 ```
@@ -104,11 +103,4 @@ kubectl get svc nginx-deployment
 ```
 
 ## Confirm external access to service 
-Now let’s try and curl each of the nodes the deployment is running on
-```
-curl http://10.0.100.70:30718
-```
-
-```
-curl http://10.0.100.102:30718
-```
+Now curl each of the nodes PUBLIC_IPs the deployment is running on
