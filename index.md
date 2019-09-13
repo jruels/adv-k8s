@@ -25,10 +25,8 @@ Lab 5: [Create ConfigMap](labs/05-configmap/)
 #### Day 2
 Lab 6: [Health checks](labs/06-networking/)  
 Lab 7: [RBAC](labs/07-rbac/)  
-[//]: # Lab 8: [Services](labs/08-services/)  
 Lab 8: [Deployments](labs/08-deployments/)  
-[//]: # Lab 9: [DNS](labs/10-dns/)  
-Lab 10: [Secrets](labs/11-secrets/)  
-Lab 11: [Init containers](labs/12-init/)  
+Lab 9: [Secrets](labs/09-secrets/)  
+Lab 10: [Init containers](labs/10-init/)  
 
 
