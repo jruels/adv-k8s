@@ -412,12 +412,6 @@ tolerations:
 ## Apply taint to node 
 In this lab we will be applying a taint and then showing how only PODs with an exception are allowed to be scheduled on that node. 
 
-## Log into Kubernetes Master Server
-```
-ssh ubuntu@<IP of k8s master>
-```
-
-
 ## Get nodes 
 `kubectl get nodes`
 
