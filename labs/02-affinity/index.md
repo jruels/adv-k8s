@@ -320,7 +320,7 @@ Now deploy and confirm it works.
 kubectl apply -f manifests/pod-anti-affinity.yaml
 ```
 
-You will now see that 4 deployments were created.  We are going to look at the first 3 and will touch on the 4th in a bit. 
+You will now see that 4 deployments were created.  
 
 For our 2 deployments we can see they were scheduled to the same node. 
 
@@ -344,11 +344,9 @@ pod-affinity-3-5599479b6d-pdpgg   1/1     Running       0          15s   100.96.
 pod-affinity-4-6496648487-9mbtd   0/1     Pending       0          15s   <none>        <none>                                        <none>
 ```
 
-You'll notice that `pod-affinity-4` is in a `Pending` status.  
+You'll notice that `pod-affinity-4` may be in a `Pending` status.  
 
-Take a look at `pod-anti-affinity.yaml` and see if you can figure out why. 
-
-Ok, well it looks like we don't have enough nodes for it to run as currently configured. To resolve this issue we need to change `requiredDuring...` to `preferredDuring...` and we've already prepared that in `pod-anti-affinity-5.yaml`
+Depending on the lab environment configuration you may not have enough nodes for it to run. To resolve this issue we need to change `requiredDuring...` to `preferredDuring...` and we've already prepared that in `pod-anti-affinity-5.yaml`
 
 Deploy using `pod-anti-affinity-5.yaml` an confirm it schedules property. 
 
