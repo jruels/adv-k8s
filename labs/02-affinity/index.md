@@ -121,7 +121,7 @@ kubectl apply -f manifests/affinity.yaml
 ```
 
 ```
-apiVersion: apps/v1beta1 
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
   name: redis-cache
@@ -156,7 +156,7 @@ kubectl apply -f manifests/anti_and_affinity.yaml
 ```
 
 ```
-apiVersion: apps/v1beta1 
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
   name: web-server
@@ -213,7 +213,7 @@ Start by looking in `02-affinity/manifests` and you'll see `pod-affinity.yaml`. 
 The manifest deploys `pod-affinity-1` without any special labels, but if you look at `pod-affinity-2` you'll see that it is required to run on the same node as `pod-affinity-1`.   
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod-affinity-1
@@ -231,7 +231,7 @@ spec:
         - name: nodejs-port
           containerPort: 3000
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod-affinity-2
