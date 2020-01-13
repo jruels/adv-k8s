@@ -1,8 +1,11 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod-affinity-1
 spec:
+  selector:
+    matchLabels:
+      app: pod-affinity-1
   replicas: 1
   template:
     metadata:
@@ -16,11 +19,14 @@ spec:
         - name: nodejs-port
           containerPort: 3000
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod-affinity-2
 spec:
+  selector:
+    matchLabels:
+      app: pod-affinity-2
   replicas: 3
   template:
     metadata:
@@ -44,11 +50,14 @@ spec:
         - name: redis-port
           containerPort: 6379
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod-affinity-3
 spec:
+  selector:
+    matchLabels:
+      app: pod-affinity-3
   replicas: 3
   template:
     metadata:
@@ -72,11 +81,14 @@ spec:
         - name: nodejs-port
           containerPort: 3000
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod-affinity-4
 spec:
+  selector:
+    matchLabels:
+      app: pod-affinity-4
   replicas: 1
   template:
     metadata:
