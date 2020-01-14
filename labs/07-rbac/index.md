@@ -111,7 +111,7 @@ kubectl --context=employee-context get pods
 
 ```
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: office
   name: deployment-manager
@@ -131,7 +131,7 @@ kubectl create -f role-deployment-manager.yaml
 
 ```
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: deployment-manager-binding
   namespace: office
