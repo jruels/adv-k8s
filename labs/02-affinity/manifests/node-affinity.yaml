@@ -4,8 +4,8 @@ metadata:
   name: node-affinity
 spec:
   selector:
-  matchLabels:
-    app: node-affinity
+    matchLabels:
+      app: node-affinity
   replicas: 3
   template:
     metadata:
