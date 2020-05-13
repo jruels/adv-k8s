@@ -121,11 +121,14 @@ kubectl apply -f manifests/affinity.yaml
 ```
 
 ```
-apiVersion: apps/v1 
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-cache
 spec:
+  selector:
+    matchLabels:
+       app: store
   replicas: 3
   template:
     metadata:

@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: pod-affinity-5
 spec:
+  selector:
+    matchLabels:
+      app: pod-affinity-5
   replicas: 1
   template:
     metadata:
