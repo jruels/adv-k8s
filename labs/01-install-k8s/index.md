@@ -10,16 +10,16 @@ ssh -i /path/to/lab.pem ubuntu@<server IP>
 ### Windows 
 Open Putty and configure a new session. 
   
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%208.png)
+![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A%209.png)
 
 
 Expand “Connection/SSH/Auth and then specify the PPK file 
 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%208.png)
+![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B%209.png)
 
  Now save your session 
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%208.png)
+![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA%209.png)
 
 
 ## Install Kubernetes on all servers
@@ -43,7 +43,7 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/
 Now that you've added the repository install the packages
 ```
 apt-get update
-apt-get install -y kubelet=1.17.0-00 kubeadm=1.17.0-00 kubectl
+apt-get install -y kubelet=1.19.3-00 kubeadm=1.19.3-00 kubectl
 ```
 
 The kubelet is now restarting every few seconds, as it waits in a `crashloop` for `kubeadm` to tell it what to do.
@@ -51,7 +51,7 @@ The kubelet is now restarting every few seconds, as it waits in a `crashloop` fo
 ### Initialize the Master 
 Run the following command on the master node to initialize 
 ```
-kubeadm init --kubernetes-version=1.17.0 --ignore-preflight-errors=all
+kubeadm init --kubernetes-version=1.19.3 --ignore-preflight-errors=all
 ```
 
 If everything was successful output will contain 
