@@ -15,7 +15,7 @@ Instructor will provide lab VM sheet.
 Lab 1: [Install Kubernetes](labs/01-install-k8s/)  
 Lab 2: [Advanced scheduling](labs/02-affinity/)  
 Lab 3: [Custom scheduler](labs/03-scheduler/)  
-Lab 4: [Kubelet](labs/04-kubelet/)  
+[//]: # Lab 4: [Kubelet](labs/04-kubelet/)  
 Lab 5: [Create ConfigMap](labs/05-configmap/)  
 
 #### Day 2
