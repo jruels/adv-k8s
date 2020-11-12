@@ -3,7 +3,7 @@
 This site includes the labs for the Advanced Kubernetes class. 
 
 
-## lab VMs  
+## Lab VMs  
 [//]: # (https://docs.google.com/spreadsheets/d/1psMAAPxgHq9wpZVftao9UT8MIWR1xljq-WB8aOiVBRI/edit?usp=sharing)  
 Instructor will provide lab VM sheet.
 
@@ -15,14 +15,13 @@ Instructor will provide lab VM sheet.
 Lab 1: [Install Kubernetes](labs/01-install-k8s/)  
 Lab 2: [Advanced scheduling](labs/02-affinity/)  
 Lab 3: [Custom scheduler](labs/03-scheduler/)  
-[//]: # Lab 4: [Kubelet](labs/04-kubelet/)  
-Lab 5: [Create ConfigMap](labs/05-configmap/)  
+Lab 4: [Create ConfigMap](labs/05-configmap/)  
 
 #### Day 2
-Lab 6: [Health checks](labs/06-networking/)  
-Lab 7: [RBAC](labs/07-rbac/)  
-Lab 8: [Deployments](labs/08-deployments/)  
-Lab 9: [Secrets](labs/09-secrets/)  
-Lab 10: [Init containers](labs/10-init/)  
+Lab 5: [Health checks](labs/06-networking/)  
+Lab 6: [RBAC](labs/07-rbac/)  
+Lab 7: [Deployments](labs/08-deployments/)  
+Lab 8: [Secrets](labs/09-secrets/)  
+Lab 9: [Init containers](labs/10-init/)  
 
 
