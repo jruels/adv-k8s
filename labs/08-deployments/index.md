@@ -274,10 +274,6 @@ kubectl rollout history deployment frontend
 
 Remember when you rolled back the previous version it changed the order of deployment revisions. 
 
-Use the following command to see details about each deployment revision, replacing `<number>` with the actual revision number.
-```
-kubectl rollout history deployment/frontend --revision=<number>
-```
 
 ## Cleanup
 To clean up everything run 
