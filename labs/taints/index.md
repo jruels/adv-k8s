@@ -622,9 +622,29 @@ Notice that job cronjob2-1578573540 was triggered before cronjob2-1578573480 cou
 The other properties of a CronJob are: 
 
 - Job history: `successfulJobsHistoryLimit` and `failedJobsHistoryLimit` can be used to specify how much history you want to retain for failed and completed Jobs.
+
 - Start deadline specified by startingDeadlineSeconds.
 - Suspend specified by suspend
 
+# Drain node 
+You can use drain to safely evict all of your pods from a node before you perform maintenance on the node (e.g. kernel upgrade, hardware maintenance, etc.). Safe evictions allow the pod's containers to gracefully terminate and will respect the PodDisruptionBudgets you have specified.
 
+First, identify the name of the node you wish to drain. You can list all of the nodes in your cluster with:
+```
+kubectl get nodes
+```
 
+Next, tell Kubernetes to drain the node:
+```
+kubectl drain <node name>
+```
 
+Once it returns (without giving an error), you can power down the node (or equivalently, if on a cloud platform, delete the virtual machine backing the node). If you leave the node in the cluster during the maintenance operation, you need to run:
+
+```
+kubectl uncordon <node name>
+```
+
+afterwards to tell Kubernetes that it can resume scheduling new pods onto the node.
+
+## Congrats! 
