@@ -421,7 +421,7 @@ spec:
 Create the Job and keep an eye on how it progresses.
 
 ```
-kubectl apply -f manifests/jobs4.yaml
+kubectl apply -f manifests/job4.yaml
 ```
 
 Check status: 
