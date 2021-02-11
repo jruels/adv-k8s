@@ -443,10 +443,10 @@ Since we had set `completions` to two:
 * Two Pods were instantiated one after the other (sequentially).
 * Job was marked Completed (successful) only after both pods ran to completion. Otherwise, the failure conditions would have applied (as discussed above).
 
-Let’s check the rpPod logs as well.
+Let’s check the pod logs as well.
 
 ```
-ubectl get pods -l=job-name=job4
+kubectl get pods -l=job-name=job4
 kubectl logs <pod_name>
 
 ```
