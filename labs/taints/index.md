@@ -289,7 +289,7 @@ status:
 
 To delete the job, simply run 
 ```
-kubectl delete job/job2.
+kubectl delete job/job2
 ```
 
 ### Handling failures
