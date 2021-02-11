@@ -271,7 +271,7 @@ kubectl apply -f manifests/job2.yaml
 
 Check the status:
 ```
-kubect get job/job2 -o yaml
+kubectl get job/job2 -o yaml
 ```
 
 Scroll down to check the `status` field and you will see that the Job is in a `Failed` state due to `DeadlineExceeded`.
@@ -447,7 +447,7 @@ Let’s check the rpPod logs as well.
 
 ```
 ubectl get pods -l=job-name=job4
-kubect logs <pod_name>
+kubectl logs <pod_name>
 
 ```
 
