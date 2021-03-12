@@ -536,7 +536,7 @@ The jobTemplate section is the same as that of a Job. It’s simply embedded wit
 Create the `CronJob`
 
 ```
-kubectl apply -f cronjob1
+kubectl apply -f cronjob1.yaml
 
 kubectl get cronjob/cronjob1
 ```
@@ -602,7 +602,7 @@ You can create this CronJob and then track the individual Jobs to observe the be
 ```
 kubectl apply -f manifests/cronjob2.yaml
 
-kubctl get jobs -w
+kubectl get jobs -w
 ```
 
 Since the schedule is every one minute and the container runs for 90 seconds, you will see multiple Jobs running at the same time. This overlap is possible since we have applied `concurrencyPolicy: Allow`.
