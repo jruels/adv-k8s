@@ -536,7 +536,7 @@ The jobTemplate section is the same as that of a Job. It’s simply embedded wit
 Create the `CronJob`
 
 ```
-kubectl apply -f cronjob1.yaml
+kubectl apply -f manifests/cronjob1.yaml
 
 kubectl get cronjob/cronjob1
 ```
