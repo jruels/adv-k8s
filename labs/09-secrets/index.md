@@ -121,17 +121,17 @@ Inside the container that mounts a secret volume, the secret keys appear as file
 
 List secrets 
 ```
-kubectl exec -it mypod ls /etc/foo
+kubectl exec -it mypod -- ls /etc/foo
 ```
 
 Output username 
 ```
-kubectl exec -it mypod cat /etc/foo/username
+kubectl exec -it mypod -- cat /etc/foo/username
 ```
 
 Output password
 ```
-kubectl exec -it mypod cat /etc/foo/password
+kubectl exec -it mypod -- cat /etc/foo/password
 ```		
 
 
@@ -163,7 +163,7 @@ spec:
 Now let’s confirm secret is available in the container. 
 Log into container 
 ```
-kubectl exec -it secret-env-pod bash 
+kubectl exec -it secret-env-pod -- bash 
 ```
 
 Echo the environment variables 
