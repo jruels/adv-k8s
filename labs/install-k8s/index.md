@@ -31,7 +31,6 @@ sudo su -
 
 Install packages required for Kubernetes on all servers as the root user
 ```
-apt-get update && apt-get install -y apt-transport-https
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 ```
 

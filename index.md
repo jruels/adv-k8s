@@ -23,6 +23,6 @@ Lab 6: [Create ConfigMap](labs/configmap/)
 Lab 7: [Health checks](labs/health-checks/)  
 Lab 8: [RBAC](labs/rbac/)  
 Lab 9: [Secrets](labs/secrets/)  
-Lab 10: [Init containers](init/)  
+Lab 10: [Init containers](labs/init/)  
 
 
