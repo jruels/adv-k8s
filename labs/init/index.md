@@ -132,7 +132,7 @@ spec:
     - wget
     - "-O"
     - "/work-dir/index.html"
-    - http://kubernetes.io
+    - http://info.cern.ch
     volumeMounts:
     - name: workdir
       mountPath: "/work-dir"
@@ -146,7 +146,7 @@ In the configuration file, you can see that the Pod has a Volume that the init c
 
 The init container mounts the shared Volume at `/work-dir`, and the application container mounts the shared Volume at `/usr/share/nginx/html`. The init container runs the following command and then terminates:
 ```
-wget -O /work-dir/index.html http://kubernetes.io
+wget -O /work-dir/index.html http://info.cern.ch
 ```
 Notice that the init container writes the `index.html` file in the root directory of the nginx server.
 
@@ -174,13 +174,10 @@ kubectl exec -it init-demo -- /bin/bash
 Send a GET request to the nginx web server 
 ```
 apt-get update && apt-get install -y curl 
-curl -s localhost | grep "is open source"
+curl localhost
 ```
 
 The output shows that nginx is serving the web page that was written by the init container:
-```
-<p>Kubernetes is open source giving you the freedom to take advantage of on-premises, hybrid, or public cloud infrastructure, letting you effortlessly move workloads to where it matters to you.</p>
-```
 
 We can also confirm the `install` init container completed its task by looking at the logs. 
 ```
@@ -189,9 +186,7 @@ kubectl logs -f init-demo -c install
 
 Look for something similar to
 ```
-Connecting to kubernetes.io (45.54.44.100:80)
-Connecting to kubernetes.io (45.54.44.100:443)
-index.html           100% |*******************************| 21693   0:00:00 ETA
+127.0.0.1 - - [06/Apr/2021:02:22:42 +0000] "GET / HTTP/1.1" 200 646 "-" "curl/7.64.0" "-"
 ```
 
 ## Lab Complete 
